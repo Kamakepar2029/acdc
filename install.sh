@@ -5,9 +5,10 @@ service bind9 stop && update-rc.d bind9 disable
 mv /etc/samba/smb.conf /etc/samba/smb.conf.org
 read -p 'Enter realm: [your realm] ' REA
 read -p 'Enter domain: [your domain] ' DOMA
-read -p 'Enter Server Role [dc or something else]' SRVROLE
+read -p 'Enter Server Role [dc or something else] ' SRVROLE
 read -p 'Enter Server Hostname [your hostname] ' HOSTSN
-samba-tool domain provision --realm=$REA --domain $DOMA --adminpass=$ADM --dns-backend=SAMBA_INTERNAL --server-role=$SRVROLE --host-name=$HOSTSN --use-rfc2307
+read -p 'Enter Server IP [ipaddr] ' IPAD
+samba-tool domain provision --realm=$REA --domain $DOMA --adminpass=$ADM --dns-backend=SAMBA_INTERNAL --server-role=$SRVROLE --host-name=$HOSTSN --host-ip=$IPAD --use-rfc2307
 systemctl enable smbd samba-ad-dc
 systemctl restart smbd samba-ad-dc
 apt-get install krb5-user resolvconf
