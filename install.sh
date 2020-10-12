@@ -21,7 +21,7 @@ echo 'printing = bsd'
 echo 'printcap name = /dev/null'
 echo '#-------------------------------------------------'
 mv /etc/krb5.conf /etc/krb5.conf.old
-cp /usr/local/samba/private/krb5.conf /etc/krb5.conf
+cp /var/lib/samba/private/krb5.conf /etc/
 echo 'Now you should restart the computer'
 read -p 'Press Enter to restart the computer'
 reboot
