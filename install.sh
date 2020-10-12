@@ -7,7 +7,7 @@ read -p 'Enter realm: [your realm] ' REA
 read -p 'Enter domain: [your domain] ' DOMA
 read -p 'Enter Server Role [dc or something else]' SRVROLE
 read -p 'Enter Server Hostname [your hostname] ' HOSTSN
-samba-tool domain provision --realm=$REA --domain $DOMA --adminpass=$ADM --dns-backend=SAMBA_INTERNAL --server-role=$SRVROLE --host-name=$HOSTSN --use-rfc2307 --interactive
+samba-tool domain provision --realm=$REA --domain $DOMA --adminpass=$ADM --dns-backend=SAMBA_INTERNAL --server-role=$SRVROLE --host-name=$HOSTSN --use-rfc2307
 systemctl enable smbd samba-ad-dc
 systemctl restart smbd samba-ad-dc
 apt-get install krb5-user resolvconf
@@ -23,4 +23,4 @@ mv /etc/krb5.conf /etc/krb5.conf.old
 cp /usr/local/samba/private/krb5.conf /etc/krb5.conf
 echo 'Now you should restart the computer'
 read -p 'Press Enter to restart the computer'
-restart
+reboot
